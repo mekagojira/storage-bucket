@@ -9,6 +9,7 @@ dotenv.config({
 
 const config = {
     isDev,
+    storagePath: process.env.STORAGE_PATH,
     jwtKey: process.env.JWT_KEY,
     port: process.env.PORT,
     bodyLimit: process.env.BODY_LIMIT || '100kb',

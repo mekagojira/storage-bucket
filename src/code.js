@@ -1,6 +1,6 @@
 const code = {
     OK: 'OK',
-    ERROR: 'ERROR'
+    ERROR: 'ERROR',
 }
 
 export default code

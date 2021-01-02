@@ -1,6 +1,5 @@
 import { version } from '../../package.json'
 import { Router } from 'express'
-import TestRouter from './TestRouter'
 import UserRouter from './UserRouter'
 import UploadRouter from './UploadRouter'
 

@@ -5,9 +5,15 @@ import createModel from './_createModel'
 const FileSchema = {
     url: String,
     name: String,
+    description: String,
+    type: String,
+    ext: String,
     mimetype: String,
+    isPublic: Boolean,
+    size: Number,
+    encoding: String,
     user: {
-        type: mongoose.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: modelNames.user,
     },
 }
