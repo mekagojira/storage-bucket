@@ -1,6 +1,7 @@
 import ActionPrototype from '../../../lib/ActionPrototype'
 import * as fs from 'fs'
 import File from '../../../models/file.model'
+import { Types } from 'mongoose'
 
 export default class SingleUpload extends ActionPrototype {
     parseFile = file => {
@@ -60,14 +61,14 @@ export default class SingleUpload extends ActionPrototype {
     }
 
     saveFile = async (file, args, { _id: userId }) => {
-        const name = `${args.name || file.filename}_${new Date().getTime()}.${
-            file.type
-        }`
+        const _id = Types.ObjectId()
+        const name = `${args.name || file.filename}_${_id}.${file.type}`
         const { absolutePath, relativePath } = await this.createDir()
 
         await this.copyFile(file, name, absolutePath)
 
         const fileData = {
+            _id,
             url: `${relativePath}/${name}`,
             name: args.name || file.filename,
             ext: file.type,
@@ -83,7 +84,10 @@ export default class SingleUpload extends ActionPrototype {
         const newFile = new File(fileData)
 
         const entity = await newFile.save()
-        return entity.toJSON()
+
+        const result = entity.toJSON()
+
+        return `/view${result.url}`
     }
 
     process = async req => {
