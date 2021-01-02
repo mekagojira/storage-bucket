@@ -87,7 +87,7 @@ export default class SingleUpload extends ActionPrototype {
 
         const result = entity.toJSON()
 
-        return `/view${result.url}`
+        return `${this.config.host}/view${result.url}`
     }
 
     process = async req => {

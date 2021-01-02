@@ -33,7 +33,7 @@ initializeDb(db => {
     app.use(middleware({ config, db }))
 
     // api router
-    app.use('/', api({ config, db }))
+    app.use(config.baseUrl || '/', api({ config, db }))
 
     app.server.listen(config.port, () => {
         console.log(`Started on port ${app.server.address().port}`)

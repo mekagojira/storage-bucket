@@ -9,6 +9,8 @@ dotenv.config({
 
 const config = {
     isDev,
+    host: process.env.SERVER_HOST,
+    baseUrl: process.env.BASE_URL,
     storagePath: process.env.STORAGE_PATH,
     jwtKey: process.env.JWT_KEY,
     port: process.env.PORT,
